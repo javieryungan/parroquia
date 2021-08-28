@@ -20,10 +20,11 @@ class misasModelo extends mainModel
         $tipoactividad     = $datos["tipoactividad"];
         $nombresministro   = $datos["nombresministro"];
         $apellidosministro = $datos["apellidosministro"];
+        $horario = $datos["horario"];
 
-        $sql = mainModel::conectar()->prepare("INSERT INTO datosactividad (act_fecharegistro, act_fechacelebracion, act_descripcion, act_aporte, id_tipoActividad, act_nombresministro, act_apellidosministro )
+        $sql = mainModel::conectar()->prepare("INSERT INTO datosactividad (act_fecharegistro, act_fechacelebracion, act_descripcion, act_aporte, id_tipoActividad, act_nombresministro, act_apellidosministro, ide_horario )
 
-            VALUES ( :fecharegistro, :fechacelebracion, :descripcion, :recolectamisa, :tipoactividad, :nombresministro, :apellidosministro)");
+            VALUES ( :fecharegistro, :fechacelebracion, :descripcion, :recolectamisa, :tipoactividad, :nombresministro, :apellidosministro, :horario)");
 
         $sql->bindParam(":fecharegistro", $fecharegistro);
         $sql->bindParam(":fechacelebracion", $fechacelebracion);
@@ -32,6 +33,7 @@ class misasModelo extends mainModel
         $sql->bindParam(":tipoactividad", $tipoactividad);
         $sql->bindParam(":nombresministro", $nombresministro);
         $sql->bindParam(":apellidosministro", $apellidosministro);
+        $sql->bindParam(":horario", $horario);
 
         $sql->execute();
         return $sql;
