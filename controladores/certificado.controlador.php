@@ -27,32 +27,33 @@
         // insertar
         public function CtrInsertarCertificadoBautizo()
         {
-            $alerta = [
+            /* $alerta = [
                 "Alerta" => "simple",
                 "Titulo" => "Advertencia",
                 "Texto"  => "El campo horario es hobligatorio.",
                 "Tipo"   => "warning"
-            ];
-
+            ]; */
             $hoy               = date('Y-m-d');
-            $fechacelebracion = mainModel::limpiar_cadena($_POST['fecha_celebracion']);
-            $pagina = mainModel::limpiar_cadena($_POST['pagina']);
-            $tomo = mainModel::limpiar_cadena($_POST['tomo']);
-            $numero = mainModel::limpiar_cadena($_POST['numero']);
-            $nombreparroco = mainModel::limpiar_cadena($_POST['nombre_parroco']);
-            $nombrebautizado = mainModel::limpiar_cadena($_POST['nombre_bautizado']);
-            $fechanacimiento = mainModel::limpiar_cadena($_POST['fecha_nacimiento']);
-            $lugarnacimiento = mainModel::limpiar_cadena($_POST['lugar_nacimiento']);
-            $nombrepadre = mainModel::limpiar_cadena($_POST['nombre_padre']);
-            $nombremadre = mainModel::limpiar_cadena($_POST['nombre_madre']);
-            $padrinos = mainModel::limpiar_cadena($_POST['padrinos']);
-            $notamarginal = mainModel::limpiar_cadena($_POST['nota_marginal']);
-            $aniocivil = mainModel::limpiar_cadena($_POST['anio_civil']);
-            $tomocivil = mainModel::limpiar_cadena($_POST['tomo_civil']);
-            $paginacivil = mainModel::limpiar_cadena($_POST['pagina_civil']);
-            $actacivil = mainModel::limpiar_cadena($_POST['acta_civil']);
-            $lugarcivil = mainModel::limpiar_cadena($_POST['lugar_civil']);
-            $fechacivil = mainModel::limpiar_cadena($_POST['fecha_civil']);
+            $fechacelebracion = $_POST['fechacelebracion'];
+            $pagina = $_POST['pagina'];
+            $tomo = $_POST['tomo'];
+            $numero = $_POST['numero'];
+            $nombreparroco = $_POST['nombreparroco'];
+            $nombrebautizado = $_POST['nombrebautizado'];
+            $fechanacimiento = $_POST['fechanacimiento'];
+            $lugarnacimiento = $_POST['lugarnacimiento'];
+            $nombrepadre = $_POST['nombrepadre'];
+            $nombremadre = $_POST['nombremadre'];
+            $padrinos = $_POST['padrinos'];
+            $notamarginal = $_POST['notamarginal'];
+            $aniocivil = $_POST['aniocivil'];
+            $tomocivil = $_POST['tomocivil'];
+            $paginacivil = $_POST['paginacivil'];
+            $actacivil = $_POST['actacivil'];
+            $lugarcivil = $_POST['lugarcivil'];
+            $fechacivil = $_POST['fechacivil'];
+            $observacion = $_POST['observacion'];
+            $certifica = $_POST['certifica'];
 
             $datos = [
 
@@ -74,7 +75,9 @@
                 "paginacivil" => $paginacivil,
                 "actacivil" => $actacivil,
                 "lugarcivil" => $lugarcivil,
-                "fechacivil" => $fechacivil
+                "fechacivil" => $fechacivil,
+                "observacion" => $observacion,
+                "certifica" => $certifica
             ];
 
             $insertar = certificadoModelo::MdlInsertarBautizo($datos);
@@ -90,7 +93,7 @@
                 $alerta = [
                     "Alerta" => "simple",
                     "Titulo" => "Ocurrio un error inesperado",
-                    "Texto"  => "No se registro la misa",
+                    "Texto"  => "No se registro el certificado de bautizo",
                     "Tipo"   => "error"
                 ];
             }

@@ -22,19 +22,21 @@ $pdf->Ln(15);
 $pdf->SetX(75);
 $pdf->Cell(0, 0, utf8_decode("Yo, el infrascrito certifico en legal forma, a peticion de parte interesada"), 0, 'R');
 $pdf->Ln(5);
-$pdf->SetX(25);
+$pdf->SetX(20);
 $pdf->MultiCell(170, 10, utf8_decode('que en Tomo ' . $editarmisa['ce_tomo'] . ' de partidas baustimales de este archivo parroquial, página ' . $editarmisa['ce_pagina'] . ', se halla inscrita una con los siguientes datos:'), 0, 'L');
 $pdf->SetFont('Times', '', 11);
 $pdf->Ln(20);
 //Columna izquierda
 $pdf->SetXY(20, 115);
 $pdf->MultiCell(60, 10, utf8_decode('N° ' . $editarmisa['ce_numero']), 0, 'L');
+$pdf->SetXY(20, 120);
+$pdf->MultiCell(60, 10,  utf8_decode($editarmisa['ce_observacion']), 0, 'L');
 $pdf->SetXY(20, 135);
 $pdf->SetFont('Times', 'B', 11);
 $pdf->Cell(60, 10, 'Nota Marginal');
 $pdf->SetFont('Times', '', 11);
 $pdf->SetXY(20, 145);
-$pdf->MultiCell(60, 10, '..................................................................................', 0, 'L');
+$pdf->MultiCell(60, 10,  utf8_decode($editarmisa['ce_nota_marginal']), 0, 'L');
 $pdf->SetXY(20, 165);
 $pdf->SetFont('Times', 'B', 11);
 $pdf->MultiCell(60, 10, utf8_decode(('Registro Civil')), 0, 'L');
@@ -54,7 +56,8 @@ $pdf->MultiCell(60, 10, utf8_decode(('Lugar y fecha: ' . $editarmisa['ce_lugar_c
 //Columna Derecha
 $pdf->SetFont('Times', '', 11);
 $pdf->SetXY(90, 115);
-$pdf->MultiCell(110, 10, utf8_decode((dateName('28/08/2021').'. El la parroquia Santa María Madre de la Iglesia El ............... bautizó solemnemente a ' . $editarmisa['ce_nombre_bautizado'] . ' nacido/a en ' . $editarmisa['ce_lugar_nacimiento'] . ' el ' .fechaNacimiento('28/08/2021').' hijo/a legitimo de ' . $editarmisa['ce_nombre_padre'] . ' y de ' . $editarmisa['ce_nombre_madre'] . ' feligreses de la Parroquia Santa María Madre de la Iglesia Fueron Padrinos: ' . $editarmisa['ce_testigos_padrinos'] . ' a quienes se advirtio sus obligaciones y parentesco espititual.
+$pdf->MultiCell(110, 10, utf8_decode((dateName('28/08/2021').'. El la parroquia Santa María Madre de la Iglesia El '.utf8_decode($editarmisa['ce_nombre_parroco']).' bautizó solemnemente a ' . $editarmisa['ce_nombre_bautizado'] . ' nacido/a en ' . $editarmisa['ce_lugar_nacimiento'] . ' el ' .fechaNacimiento('28/08/2021').' hijo/a legitimo de ' . $editarmisa['ce_nombre_padre'] . ' y de ' . $editarmisa['ce_nombre_madre'] . ' feligreses de la Parroquia Santa María Madre de la Iglesia 
+Fueron sus padrinos: ' . $editarmisa['ce_testigos_padrinos'] . ' a quienes se advirtio sus obligaciones y parentesco espititual.
 Lo  certifica, ' . $editarmisa['ce_certifica'])), 0, 'L');
 //firma
 $pdf->Ln(15);
@@ -63,7 +66,7 @@ $pdf->Cell(0, 0, utf8_decode('Son datos filmente del original, al que me remito 
 $pdf->Ln(15);
 $pdf->SetFont('Times', 'B', 11);
 $pdf->Cell(0, 0, utf8_decode('Lo certifico,'), 0, 0, 'C');
-$pdf->Ln(25);
+$pdf->Ln(20);
 $pdf->Cell(0, 0, utf8_decode('(f.)............................................'), 0, 0, 'C');
 $pdf->Ln(5);
 $pdf->Cell(0, 0, utf8_decode('PARROCO'), 0, 0, 'C');
