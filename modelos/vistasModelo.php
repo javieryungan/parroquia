@@ -20,7 +20,7 @@ class vistasModelo
             // horarios
             "horarios", "horariosnew", "horariosedit",
             // certificado bautizo
-            "certificadobautizo", "certificadobautizonew","certificadobautizoedit"
+            "certificadobautizo", "certificadobautizonew","certificadobautizoedit","certificadomatrimonio","certificadomatrimonionew","certificadomatrimonioedit"
         ];
 
         if (in_array($vistas, $listaBlanca)) {
@@ -33,7 +33,9 @@ class vistasModelo
             $contenido = "login";
         } elseif ($vistas == "reportebautiso") {
             $contenido = "reportebautiso";
-        } elseif ($vistas == "index") {
+        } elseif ($vistas == "reportematrimonio") {
+            $contenido = "reportematrimonio";
+        }  elseif ($vistas == "index") {
             $contenido = "login";
         } else {
             $contenido = "404";

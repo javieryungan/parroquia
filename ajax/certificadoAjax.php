@@ -10,7 +10,7 @@ if (isset($_POST['notamarginal']) || isset($_POST['certificadobautizoDelete']) |
     
     //insertar
     if (isset($_POST['notamarginal'])) {
-        // echo ('ingreso a insertar');
+        //echo ('ingreso a insertar baut');
         $insMisa = new certificadosControlador();
         echo $insMisa->CtrInsertarCertificadoBautizo();
     }
@@ -25,6 +25,29 @@ if (isset($_POST['notamarginal']) || isset($_POST['certificadobautizoDelete']) |
         $delMisa = new certificadosControlador();
         echo $delMisa->CtrlEliminarCertificadoBautizo();
     }
+    
+}else if (isset($_POST['nombrenovio'])||isset($_POST['certificadomatrimonioDelete'])|| isset($_POST['idmatrimonioe'])) {
+    require_once '../controladores/certificado.controlador.php';
+    
+    //insertar
+    if (isset($_POST['nombrenovio'])) {
+        //echo ('ingreso a insertar matri');
+        $insMisa = new certificadosControlador();
+        echo $insMisa->CtrInsertarCertificadoMatrimonio();
+    }
+    // actualizar
+    if (isset($_POST['idmatrimonioe'])) {
+        //echo('ingreso act matri');
+        $insMisa = new certificadosControlador();
+        echo $insMisa->CtrlActualizarCertificadoMatrimonio();
+    }
+
+    //eliminar
+    if (isset($_POST['certificadomatrimonioDelete'])) {
+        $delMisa = new certificadosControlador();
+        echo $delMisa->CtrlEliminarCertificadoMatrimonio();
+    }
+    
 } else {
     session_start();
     session_destroy();

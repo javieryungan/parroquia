@@ -74,6 +74,9 @@
 						<li>
 							<a href="<?php echo SERVERURL; ?>certificadobautizo-add/"><i class="fas fa-file-contract"></i> Certificado de confirmación</a>
 						</li>
+						<li>
+							<a href="<?php echo SERVERURL; ?>certificadomatrimonio/"><i class="fas fa-file-contract"></i> Certificado de matrimonio</a>
+						</li>
 					</ul>
 				</li>
 			<?php } ?>

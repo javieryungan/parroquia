@@ -1,6 +1,3 @@
-<!--Content page
-misas-view.
--->
 <?php
 require_once './controladores/misas.controlador.php';
 $misas         = new misasControlador();
@@ -11,19 +8,19 @@ $tipoactividad = $misas->CtrConsultarTipoactividadAll();
 <!-- Content page -->
 <div class="container-fluid">
     <div class="page-header">
-        <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Generar <small>CERTIFICADO BAUTIZO</small></h1>
+        <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Generar <small>CERTIFICADO MATRIMONIO</small></h1>
     </div>
 </div>
 
 <div class="container-fluid">
     <ul class="breadcrumb breadcrumb-tabs">
         <li>
-            <a href="<?php echo SERVERURL; ?>certificadobautizo/" class="btn btn-success">
+            <a href="<?php echo SERVERURL; ?>certificadomatrimonio/" class="btn btn-success">
                 <i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CERTIFICADOS
             </a>
         </li>
         <li>
-            <a href="<?php echo SERVERURL; ?>certificadobautizonew/" class="btn btn-info" data-toggle="modal"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO CERTIFICADO </a>
+            <a href="<?php echo SERVERURL; ?>certificadomatrimonionew/" class="btn btn-info" data-toggle="modal"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO CERTIFICADO </a>
         </li>
     </ul>
 </div>
@@ -71,32 +68,14 @@ $tipoactividad = $misas->CtrConsultarTipoactividadAll();
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">NOMBRE BAUTIZADO: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="nombrebautizado" required>
+                                    <label class="control-label">NOMBRE NOVIO: <span style="color: red;">*</span></label>
+                                    <input class="form-control" type="text" name="nombrenovio" required>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">FECHA NACIMIENTO: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="date" name="fechanacimiento" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">LUGAR NACIMIENTO: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="lugarnacimiento" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">NOMBRE PADRE: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="nombrepadre" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">NOMBRE MADRE: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="nombremadre" required>
+                                    <label class="control-label">NOMBRE NOVIA: <span style="color: red;">*</span></label>
+                                    <input class="form-control" type="text" name="nombrenovia" required>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
@@ -108,7 +87,7 @@ $tipoactividad = $misas->CtrConsultarTipoactividadAll();
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
                                     <label class="control-label">NOTA MARGINAL: </label>
-                                    <textarea name="notamarginal" class="form-control" rows="2" maxlength="100"></textarea>
+                                    <textarea name="notamarginale" class="form-control" rows="2" maxlength="100"></textarea>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
@@ -121,6 +100,12 @@ $tipoactividad = $misas->CtrConsultarTipoactividadAll();
                                 <div class="form-group label-floating">
                                     <label class="control-label">CERTIFICA: <span style="color: red;">*</span></label>
                                     <input class="form-control" type="text" name="certifica" required>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">INTRO/EXTRA: <span style="color: red;">*</span></label>
+                                    <input class="form-control" type="text" name="intro" required>
                                 </div>
                             </div>
                             <!--Datos Registro civil -->

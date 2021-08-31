@@ -21,11 +21,13 @@ require_once "core/configGeneral.php";
     $vt     = new vistasControlador();
     $vistas = $vt->obtener_vistas_controlador();
 
-    if ($vistas == "login" || $vistas == "reportebautiso" || $vistas == "404") :
+    if ($vistas == "login" || $vistas == "reportebautiso" || $vistas == "reportematrimonio" || $vistas == "404") :
         if ($vistas == "login") {
             require_once "./vistas/contenidos/login-view.php";
         } else if ($vistas == "reportebautiso") {
             require_once "./vistas/contenidos/reportebautiso-view.php";
+        }else if ($vistas == "reportematrimonio") {
+            require_once "./vistas/contenidos/reportematrimonio-view.php";
         } else {
             require_once "./vistas/contenidos/404-view.php";
         }
