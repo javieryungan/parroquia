@@ -4,52 +4,29 @@
 $peticionAjax = true;
 require_once '../core/configGeneral.php';
 
-require_once '../controladores/certificado.controlador.php';
-$insMisa = new certificadosControlador();
-echo $insMisa->CtrInsertarCertificadoBautizo();
 
-if(isset($_POST['notamarginal'])){
+if (isset($_POST['notamarginal']) || isset($_POST['certificadobautizoDelete']) || isset($_POST['idbautizoe'])) {
+    require_once '../controladores/certificado.controlador.php';
+    
     //insertar
-   
     if (isset($_POST['notamarginal'])) {
-        // console.log('hola mundo');
-        print_r('ingrese al metodo');
-        echo 'inserto';
+        // echo ('ingreso a insertar');
         $insMisa = new certificadosControlador();
         echo $insMisa->CtrInsertarCertificadoBautizo();
     }
-}
-
-/* if (isset($_POST['nombre_bautizado']) || isset($_POST['certificadoDelete']) ) {
-
-    //insertar
-   
-    if (isset($_POST['nombre_bautizado'])) {
-        // console.log('hola mundo');
-        print_r('ingrese al metodo');
-        echo 'inserto';
+    // actualizar
+    if (isset($_POST['idbautizoe'])) {
         $insMisa = new certificadosControlador();
-        echo $insMisa->CtrInsertarCertificadoBautizo();
-    }
-
-    //actualizar
-
-    if (isset($_POST['fechacelebracionup-misa'])) {
-
-        $upMisa = new misasControlador();
-        echo $upMisa->CtrlActualizarMisa();
+        echo $insMisa->CtrlActualizarCertificadoBautizo();
     }
 
     //eliminar
-    if (isset($_POST['misasDel'])) {
-        $delMisa = new misasControlador();
-        echo $delMisa->CtrlEliminarMisa();
+    if (isset($_POST['certificadobautizoDelete'])) {
+        $delMisa = new certificadosControlador();
+        echo $delMisa->CtrlEliminarCertificadoBautizo();
     }
-
-    
 } else {
     session_start();
     session_destroy();
     echo '<script>window.location.href="' . SERVERURL . 'login/"</script>';
 }
- */

@@ -20,7 +20,7 @@ class vistasModelo
             // horarios
             "horarios", "horariosnew", "horariosedit",
             // certificado bautizo
-            "certificadobautizo", "certificadobautizonew",
+            "certificadobautizo", "certificadobautizonew","certificadobautizoedit"
         ];
 
         if (in_array($vistas, $listaBlanca)) {

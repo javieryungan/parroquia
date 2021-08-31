@@ -13,26 +13,10 @@
     class certificadosControlador extends certificadoModelo
     {
 
-        public function CtrlEditarMisa()
-        {
-            $v         = explode("/", $_GET['views']);
-            $id        = mainModel::decryption(($v[1]));
-            $id        = mainModel::limpiar_cadena($id);
-            $consulta1 = mainModel::ejecutar_consulta_simple("SELECT * FROM certificados WHERE id_certificado= $id ");
-
-            $respuesta = $consulta1->fetch();
-            return $respuesta;
-        }
-
         // insertar
         public function CtrInsertarCertificadoBautizo()
         {
-            /* $alerta = [
-                "Alerta" => "simple",
-                "Titulo" => "Advertencia",
-                "Texto"  => "El campo horario es hobligatorio.",
-                "Tipo"   => "warning"
-            ]; */
+
             $hoy               = date('Y-m-d');
             $fechacelebracion = $_POST['fechacelebracion'];
             $pagina = $_POST['pagina'];
@@ -54,6 +38,9 @@
             $fechacivil = $_POST['fechacivil'];
             $observacion = $_POST['observacion'];
             $certifica = $_POST['certifica'];
+            $usuario = 1;
+
+            // echo($usuario);
 
             $datos = [
 
@@ -77,9 +64,9 @@
                 "lugarcivil" => $lugarcivil,
                 "fechacivil" => $fechacivil,
                 "observacion" => $observacion,
-                "certifica" => $certifica
+                "certifica" => $certifica,
+                "usuario" => $usuario
             ];
-
             $insertar = certificadoModelo::MdlInsertarBautizo($datos);
             if ($insertar->rowCount() >= 1) {
 
@@ -100,6 +87,19 @@
             return mainModel::sweet_alert($alerta);
             // return var_dump($datos);
         }
+
+
+        public function CtrlEditarCertificadoBautizo()
+        {
+            $v         = explode("/", $_GET['views']);
+            $id        = mainModel::decryption(($v[1]));
+            $id        = mainModel::limpiar_cadena($id);
+            $consulta1 = mainModel::ejecutar_consulta_simple("SELECT * FROM `certificados` WHERE id_tipoActividad=3 and id_certificado= $id ");
+
+            $respuesta = $consulta1->fetch();
+            return $respuesta;
+        }
+
 
         /* paginador */
         public function CtrlPaginadorCertificadoBautizo($pagina, $registros)
@@ -141,13 +141,13 @@
                             <td>' . $value['ce_fecha_celebracion'] . '</td>
                             <td>' . $value['ce_nombre_bautizado'] . '</td>
                             <td>
-                                <a href="' . SERVERURL . 'misasup/' . mainModel::encryption($value['id_certificado']) . '" class="btn btn-success btn-raised btn-xs">
+                                <a href="' . SERVERURL . 'certificadobautizoedit/' . mainModel::encryption($value['id_certificado']) . '" class="btn btn-success btn-raised btn-xs">
                                     <i class="zmdi zmdi-refresh"></i>
                                 </a>
                             </td>
                             <td>
-                                <form class="FormularioAjax" method="POST" data-form="delete" action="' . SERVERURL . 'ajax/horarioAjax.php">
-                                <input type="hidden" name="horarioDelete" value="' . mainModel::encryption($value['id_certificado']) . '"> </input>
+                                <form class="FormularioAjax" method="POST" data-form="delete" action="' . SERVERURL . 'ajax/certificadoAjax.php">
+                                <input type="hidden" name="certificadobautizoDelete" value="' . mainModel::encryption($value['id_certificado']) . '"> </input>
                                 <button type="submit" class="btn btn-danger btn-raised btn-xs">
                                 <i class="zmdi zmdi-delete"></i>
                                 </button>
@@ -206,9 +206,12 @@
             return $tabla;
         }
 
-        public function CtrlEliminarHorario()
+        /**
+         * Eliminar
+         */
+        public function CtrlEliminarCertificadoBautizo()
         {
-            $idMisa = mainModel::decryption($_POST['horarioDelete']);
+            $idMisa = mainModel::decryption($_POST['certificadobautizoDelete']);
 
             $idMisallc = mainModel::limpiar_cadena($idMisa);
             $eliminar  = certificadoModelo::MdlEliminarCertificado($idMisallc);
@@ -227,6 +230,80 @@
                     "Tipo"   => "error"
                 ];
             }
+            return mainModel::sweet_alert($alerta);
+        }
+
+        /**
+         * Actualizar
+         */
+
+        public function CtrlActualizarCertificadoBautizo()
+        {
+            $id = mainModel::decryption($_POST['idbautizoe']);
+            $fechacelebracion = mainModel::limpiar_cadena($_POST['fechacelebracione']);
+            $pagina = mainModel::limpiar_cadena($_POST['paginae']);
+            $tomo = mainModel::limpiar_cadena($_POST['tomoe']);
+            $numero = mainModel::limpiar_cadena($_POST['numeroe']);
+            $nombreparroco = mainModel::limpiar_cadena($_POST['nombreparrocoe']);
+            $nombrebautizado = mainModel::limpiar_cadena($_POST['nombrebautizadoe']);
+            $fechanacimiento = mainModel::limpiar_cadena($_POST['fechanacimientoe']);
+            $lugarnacimiento = mainModel::limpiar_cadena($_POST['lugarnacimientoe']);
+            $nombrepadre = mainModel::limpiar_cadena($_POST['nombrepadree']);
+            $nombremadre = mainModel::limpiar_cadena($_POST['nombremadree']);
+            $padrinos = mainModel::limpiar_cadena($_POST['padrinose']);
+            $notamarginal = mainModel::limpiar_cadena($_POST['notamarginale']);
+            $aniocivil = mainModel::limpiar_cadena($_POST['aniocivile']);
+            $tomocivil = mainModel::limpiar_cadena($_POST['tomocivile']);
+            $paginacivil = mainModel::limpiar_cadena($_POST['paginacivile']);
+            $actacivil = mainModel::limpiar_cadena($_POST['actacivile']);
+            $lugarcivil = mainModel::limpiar_cadena($_POST['lugarcivile']);
+            $fechacivil = mainModel::limpiar_cadena($_POST['fechacivile']);
+            $observacion = mainModel::limpiar_cadena($_POST['observacione']);
+            $certifica = mainModel::limpiar_cadena($_POST['certificae']);
+
+            $id1 = mainModel::limpiar_cadena($id);
+            $datos = [
+                "id"                => $id1,
+                "fechacelebracion"  => $fechacelebracion,
+                "pagina"       => $pagina,
+                "tomo"     => $tomo,
+                "numero"     => $numero,
+                "nombreparroco"   => $nombreparroco,
+                "nombrebautizado" => $nombrebautizado,
+                "fechanacimiento" => $fechanacimiento,
+                "lugarnacimiento" => $lugarnacimiento,
+                "nombrepadre" => $nombrepadre,
+                "nombremadre" => $nombremadre,
+                "padrinos" => $padrinos,
+                "notamarginal" => $notamarginal,
+                "aniocivil" => $aniocivil,
+                "tomocivil" => $tomocivil,
+                "paginacivil" => $paginacivil,
+                "actacivil" => $actacivil,
+                "lugarcivil" => $lugarcivil,
+                "fechacivil" => $fechacivil,
+                "observacion" => $observacion,
+                "certifica" => $certifica
+            ];
+            $actualizar = certificadoModelo::MdlActualizarCertificadoBautizo($datos);
+            if ($actualizar->rowCount() >= 1) {
+                $url    = SERVERURL . 'certificadobautizo/';
+                $alerta = [
+                    "Alerta"    => "dirigir",
+                    "Titulo"    => "Certificado Actualizado",
+                    "Texto"     => "Actualizacion Exitosa",
+                    "Tipo"      => "success",
+                    "direccion" => $url
+                ];
+            } else {
+                $alerta = [
+                    "Alerta" => "simple",
+                    "Titulo" => "Ocurrio un error inesperado",
+                    "Texto"  => "No se pudo actualizar el certificado",
+                    "Tipo"   => "error"
+                ];
+            }
+
             return mainModel::sweet_alert($alerta);
         }
     }

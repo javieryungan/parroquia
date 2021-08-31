@@ -1,7 +1,7 @@
 <?php
 require_once "./controladores/certificado.controlador.php";
 $login = new certificadosControlador();
-$editarmisa = $login->CtrlEditarMisa();
+$editarmisa = $login->CtrlEditarCertificadoBautizo();
 $data = json_encode($editarmisa);
 ob_start();
 
