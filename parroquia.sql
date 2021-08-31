@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3307
--- Tiempo de generación: 24-08-2021 a las 03:30:48
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 31-08-2021 a las 23:04:38
 -- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 7.3.27
+-- Versión de PHP: 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -92,13 +92,43 @@ INSERT INTO `caritas` (`id_carita`, `car_fecha`, `car_descripcion`, `car_tipoben
 
 CREATE TABLE `certificados` (
   `id_certificado` int(11) NOT NULL,
-  `cer_fecha` date NOT NULL,
-  `cer_nompersona` varchar(40) NOT NULL,
-  `cer_tipo` varchar(30) NOT NULL,
-  `cer_pdfcertificado` blob NOT NULL,
   `id_tipoActividad` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `ce_fecha_registro` date NOT NULL,
+  `ce_fecha_celebracion` date NOT NULL,
+  `ce_pagina` varchar(25) NOT NULL,
+  `ce_tomo` varchar(25) NOT NULL,
+  `ce_nombre_bautizado` varchar(100) NOT NULL,
+  `ce_intro_extra` varchar(50) DEFAULT NULL,
+  `ce_nombre_padre` varchar(100) NOT NULL,
+  `ce_nombre_madre` varchar(100) NOT NULL,
+  `ce_testigos_padrinos` varchar(200) DEFAULT NULL,
+  `ce_certifica` varchar(100) NOT NULL,
+  `ce_fecha_nacimiento` date DEFAULT NULL,
+  `ce_lugar_nacimiento` varchar(100) DEFAULT NULL,
+  `ce_anio_civil` varchar(10) DEFAULT NULL,
+  `ce_tomo_civil` varchar(25) DEFAULT NULL,
+  `ce_pagina_civil` varchar(25) DEFAULT NULL,
+  `ce_acta_civil` varchar(25) DEFAULT NULL,
+  `ce_lugar_civil` varchar(100) DEFAULT NULL,
+  `ce_fecha_civil` date DEFAULT NULL,
+  `ce_numero` varchar(25) DEFAULT NULL,
+  `ce_nombre_parroco` varchar(100) DEFAULT NULL,
+  `ce_observacion` varchar(200) DEFAULT NULL,
+  `ce_nota_marginal` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `certificados`
+--
+
+INSERT INTO `certificados` (`id_certificado`, `id_tipoActividad`, `id_usuario`, `ce_fecha_registro`, `ce_fecha_celebracion`, `ce_pagina`, `ce_tomo`, `ce_nombre_bautizado`, `ce_intro_extra`, `ce_nombre_padre`, `ce_nombre_madre`, `ce_testigos_padrinos`, `ce_certifica`, `ce_fecha_nacimiento`, `ce_lugar_nacimiento`, `ce_anio_civil`, `ce_tomo_civil`, `ce_pagina_civil`, `ce_acta_civil`, `ce_lugar_civil`, `ce_fecha_civil`, `ce_numero`, `ce_nombre_parroco`, `ce_observacion`, `ce_nota_marginal`) VALUES
+(2, 3, 7, '2021-08-28', '2017-08-05', '524', '1', 'Alisson Pauler Quiñonez Muñoz', '', 'Wilithon Nery Quiñonez Hidalgo', 'Fátima Pilar Muñoz Contreras', 'Wilithon Quiñonez y Mercedes de Jesús Muñoz Contreras', 'P. Antonio Ceron SDS', '2027-05-17', 'Quito', '2017', '72', '33', '72', 'Quito', '2017-06-13', '1565', 'P. Luis Ospina Carmona SDS', 'Alisson, Paulet, Quiñonez, Muñoz', 'prueba actualizado'),
+(7, 4, 10, '2021-08-03', '2021-08-12', '2', '', '', NULL, '', '', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 4, 1, '2021-08-17', '2021-08-18', '', '', '', NULL, '', '', NULL, '', '2021-08-18', NULL, NULL, NULL, NULL, NULL, NULL, '2021-08-26', NULL, NULL, NULL, NULL),
+(9, 4, 1, '2021-08-17', '2021-08-18', '', '', '', NULL, '', '', NULL, '', '2021-08-18', NULL, NULL, NULL, NULL, NULL, NULL, '2021-08-26', NULL, NULL, NULL, NULL),
+(24, 10, 1, '2021-08-31', '2021-08-31', '21', '213', '', 'INTRO', '231', '123', '123', '21312', NULL, NULL, 'erw', '342', '32', '2342', '3242', '2021-08-21', '23', '231', '123', '1231'),
+(25, 10, 1, '2021-08-31', '2021-10-26', '87', 'I', '', 'intra', 'Nombre novio ejemplo', 'Nombre de novuia ejemplo', 'Rocio y Cesar', 'P. Roberto Bravo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '255', 'P. Ricardo Bravo', 'Silvia, Aguirre', 'Jorge Rodrigo, cabrera');
 
 -- --------------------------------------------------------
 
@@ -112,7 +142,7 @@ CREATE TABLE `datosactividad` (
   `act_numero` int(10) NOT NULL,
   `act_pagina` int(10) NOT NULL,
   `act_fecharegistro` date NOT NULL,
-  `act_fechacelebracion` datetime NOT NULL,
+  `act_fechacelebracion` date NOT NULL,
   `act_nombres` varchar(40) NOT NULL,
   `act_apellidos` varchar(40) NOT NULL,
   `act_cedula` int(10) NOT NULL,
@@ -175,29 +205,45 @@ CREATE TABLE `datosactividad` (
   `act_nombresministro` varchar(30) NOT NULL,
   `act_apellidosministro` varchar(30) NOT NULL,
   `id_tipoActividad` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `ide_horario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `datosactividad`
 --
 
-INSERT INTO `datosactividad` (`id_datosActividad`, `act_tomo`, `act_numero`, `act_pagina`, `act_fecharegistro`, `act_fechacelebracion`, `act_nombres`, `act_apellidos`, `act_cedula`, `act_telefono`, `act_fechanacimiento`, `act_descripcion`, `act_direccion`, `act_nombressolicitante`, `act_aporte`, `act_nombrespadre`, `act_apellidospadre`, `act_telefonopadre`, `act_direccionpadre`, `act_nombresmadre`, `act_apellidosmadre`, `act_telefonomadre`, `act_direccionmadre`, `act_nombrespadrino`, `act_apellidospadrino`, `act_civilpadrino`, `act_nombresmadrina`, `act_apellidosmadrina`, `act_civilmadrina`, `act_nombresnovia`, `act_apellidosnovia`, `act_cedulanovia`, `act_telefononovia`, `act_fechanacimientonovia`, `act_nombrestest1novio`, `act_apellidostest1novio`, `act_direcciontest1novio`, `act_cedulatest1novio`, `act_nombrestest2novio`, `act_apellidostest2novio`, `act_direcciontest2novio`, `act_cedulatest2novio`, `act_nombrestest1novia`, `act_apellidostest1novia`, `act_direcciontest1novia`, `act_cedulatest1novia`, `act_nombrestest2novia`, `act_apellidostest2novia`, `act_direcciontest2novia`, `act_cedulatest2novia`, `act_actanacimiento`, `act_certificadobautismo`, `act_matrimoniopadrino`, `act_matrimoniomadrina`, `act_bautizonovio`, `act_bautizonovia`, `act_confirmacionnovio`, `act_confirmacionnovia`, `act_matrimoniocivil`, `act_pdfcedulanovio`, `act_pdfcedulanovia`, `act_pdfcedulatest1novio`, `act_pdfcedulatest2novio`, `act_pdfcedulatest1novia`, `act_pdfcedulatest2novia`, `act_nombresministro`, `act_apellidosministro`, `id_tipoActividad`, `id_usuario`) VALUES
-(38, 0, 0, 0, '2021-08-10', '2021-08-26 16:50:00', 'ines de la torre', '', 0, 987678777, '0000-00-00', 'Misa numero uno', 'quito', 'Tita de la torre', 100, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0),
-(39, 0, 0, 0, '2021-08-13', '2021-08-27 00:03:00', '', '', 0, 0, '0000-00-00', 'n/a', '', '', 108, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 8, 0),
-(40, 0, 0, 0, '2021-08-12', '2021-08-12 23:41:00', '', '', 0, 0, '0000-00-00', 'nnn', '', '', 108, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 7, 0),
-(42, 0, 0, 0, '2021-08-10', '2021-08-25 17:59:00', 'Maria Juana velez', '', 0, 987654321, '0000-00-00', '', 'norte', 'Lucrecia velez', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 0, 0),
-(43, 0, 0, 0, '2021-08-10', '2021-08-21 16:57:00', 'pedro mocayo juarez', '', 0, 2147483647, '0000-00-00', '', 'probando', 'leila moncayo juarez', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0),
-(44, 0, 0, 0, '2021-08-10', '2021-08-19 17:38:00', 'rosa perez doe', '', 0, 90909090, '0000-00-00', '', 'norte', 'julio perez doe', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 5, 0),
-(45, 0, 0, 0, '2021-08-10', '2021-08-30 19:40:00', 'Yoana maria luz', '', 0, 2147483647, '0000-00-00', '', 'norte de quito', 'Marcos Ramiro', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Administrador', 'De la cruz', 5, 0),
-(46, 0, 0, 0, '2021-08-10', '2021-08-24 18:43:00', 'chana dc', '', 0, 2147483647, '0000-00-00', '', 'norte', 'juana dc', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 5, 0),
-(47, 0, 0, 0, '2021-08-11', '2021-08-25 04:19:00', 'lola perez', '', 0, 2147483647, '0000-00-00', '', 'quito', 'ines pinco', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 5, 0),
-(49, 0, 0, 0, '2021-08-01', '2021-08-19 23:37:43', 'mauricia', 'pell', 0, 0, '0000-00-00', 'probando', '', '', 14, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andrai', '', 1, 0),
-(50, 0, 0, 0, '0000-00-00', '0000-00-00 00:00:00', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 1, 0),
-(51, 0, 0, 0, '2021-08-20', '2021-08-20 00:20:00', '', '', 0, 0, '0000-00-00', 'misa et al', '', '', 15, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0),
-(52, 0, 0, 0, '2021-08-20', '2021-08-20 06:22:00', 'yessi', '', 0, 988888888, '0000-00-00', '', 'norte', 'marina', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 5, 0),
-(56, 0, 0, 0, '2021-08-23', '2021-08-24 16:50:00', '', '', 0, 0, '0000-00-00', 'nuevo retiro', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 9, 9),
-(58, 0, 0, 0, '2021-08-23', '2021-08-31 23:10:00', '', '', 0, 0, '0000-00-00', 'retiro nuevo dos', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 9, 2);
+INSERT INTO `datosactividad` (`id_datosActividad`, `act_tomo`, `act_numero`, `act_pagina`, `act_fecharegistro`, `act_fechacelebracion`, `act_nombres`, `act_apellidos`, `act_cedula`, `act_telefono`, `act_fechanacimiento`, `act_descripcion`, `act_direccion`, `act_nombressolicitante`, `act_aporte`, `act_nombrespadre`, `act_apellidospadre`, `act_telefonopadre`, `act_direccionpadre`, `act_nombresmadre`, `act_apellidosmadre`, `act_telefonomadre`, `act_direccionmadre`, `act_nombrespadrino`, `act_apellidospadrino`, `act_civilpadrino`, `act_nombresmadrina`, `act_apellidosmadrina`, `act_civilmadrina`, `act_nombresnovia`, `act_apellidosnovia`, `act_cedulanovia`, `act_telefononovia`, `act_fechanacimientonovia`, `act_nombrestest1novio`, `act_apellidostest1novio`, `act_direcciontest1novio`, `act_cedulatest1novio`, `act_nombrestest2novio`, `act_apellidostest2novio`, `act_direcciontest2novio`, `act_cedulatest2novio`, `act_nombrestest1novia`, `act_apellidostest1novia`, `act_direcciontest1novia`, `act_cedulatest1novia`, `act_nombrestest2novia`, `act_apellidostest2novia`, `act_direcciontest2novia`, `act_cedulatest2novia`, `act_actanacimiento`, `act_certificadobautismo`, `act_matrimoniopadrino`, `act_matrimoniomadrina`, `act_bautizonovio`, `act_bautizonovia`, `act_confirmacionnovio`, `act_confirmacionnovia`, `act_matrimoniocivil`, `act_pdfcedulanovio`, `act_pdfcedulanovia`, `act_pdfcedulatest1novio`, `act_pdfcedulatest2novio`, `act_pdfcedulatest1novia`, `act_pdfcedulatest2novia`, `act_nombresministro`, `act_apellidosministro`, `id_tipoActividad`, `id_usuario`, `ide_horario`) VALUES
+(38, 0, 0, 0, '2021-08-10', '2021-08-26', 'ines de la torre', '', 0, 987678777, '0000-00-00', 'Misa numero uno', 'quito', 'Tita de la torre', 100, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0, 0),
+(39, 0, 0, 0, '2021-08-13', '2021-08-27', '', '', 0, 0, '0000-00-00', 'n/a', '', '', 108, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 8, 0, 0),
+(40, 0, 0, 0, '2021-08-12', '2021-08-12', '', '', 0, 0, '0000-00-00', 'nnn', '', '', 108, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 7, 0, 0),
+(42, 0, 0, 0, '2021-08-10', '2021-08-25', 'Maria Juana velez', '', 0, 987654321, '0000-00-00', '', 'norte', 'Lucrecia velez', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 0, 0, 0),
+(43, 0, 0, 0, '2021-08-10', '2021-08-21', 'pedro mocayo juarez', '', 0, 2147483647, '0000-00-00', '', 'probando', 'leila moncayo juarez', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0, 0),
+(44, 0, 0, 0, '2021-08-10', '2021-08-19', 'rosa perez doe', '', 0, 90909090, '0000-00-00', '', 'norte', 'julio perez doe', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 5, 0, 0),
+(45, 0, 0, 0, '2021-08-10', '2021-08-30', 'Yoana maria luz', '', 0, 2147483647, '0000-00-00', '', 'norte de quito', 'Marcos Ramiro', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Administrador', 'De la cruz', 5, 0, 0),
+(46, 0, 0, 0, '2021-08-10', '2021-08-24', 'chana dc', '', 0, 2147483647, '0000-00-00', '', 'norte', 'juana dc', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 5, 0, 0),
+(47, 0, 0, 0, '2021-08-11', '2021-08-25', 'lola perez', '', 0, 2147483647, '0000-00-00', '', 'quito', 'ines pinco', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 5, 0, 0),
+(49, 0, 0, 0, '2021-08-01', '2021-08-19', 'mauricia', 'pell', 0, 0, '0000-00-00', 'probando', '', '', 14, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andrai', '', 1, 0, 0),
+(50, 0, 0, 0, '0000-00-00', '0000-00-00', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 1, 0, 0),
+(51, 0, 0, 0, '2021-08-20', '2021-08-20', '', '', 0, 0, '0000-00-00', 'misa et al', '', '', 15, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0, 0),
+(52, 0, 0, 0, '2021-08-20', '2021-08-20', 'yessi', '', 0, 988888888, '0000-00-00', '', 'norte', 'marina', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 5, 0, 0),
+(56, 0, 0, 0, '2021-08-23', '2021-08-24', '', '', 0, 0, '0000-00-00', 'nuevo retiro', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 9, 9, 0),
+(58, 0, 0, 0, '2021-08-23', '2021-08-31', '', '', 0, 0, '0000-00-00', 'retiro nuevo dos', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 9, 2, 0),
+(62, 0, 0, 0, '2021-08-24', '2021-08-12', '', '', 0, 0, '0000-00-00', 'aprueba esa opcion', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 9, 2, 0),
+(63, 0, 0, 0, '2021-08-27', '2021-08-27', '', '', 0, 0, '0000-00-00', 'es por objetivo de tal cosa', '', '', 1245, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0, 1),
+(64, 0, 0, 0, '2021-08-27', '2021-08-27', '', '', 0, 0, '0000-00-00', 'Prueba', '', '', 212, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0, 2),
+(65, 0, 0, 0, '2021-08-27', '2021-08-27', '', '', 0, 0, '0000-00-00', 'Prueba 3', '', '', 43, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0, 3),
+(66, 0, 0, 0, '2021-08-27', '2021-08-27', '', '', 0, 0, '0000-00-00', '', '', '', 2, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0, 0),
+(67, 0, 0, 0, '2021-08-27', '2021-08-27', '', '', 0, 0, '0000-00-00', 'dfghdhg', '', '', 2, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0, 0),
+(68, 0, 0, 0, '2021-08-27', '2021-08-31', '', '', 0, 0, '0000-00-00', '', '', '', 4, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0, 5),
+(69, 0, 0, 0, '2021-08-27', '2021-08-27', '', '', 0, 0, '0000-00-00', '', '', '', 4, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0, 0),
+(70, 0, 0, 0, '2021-08-27', '2021-09-15', '', '', 0, 0, '0000-00-00', 'Misa por accion de gracia por el Hno. Pedro', '', '', 1, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 'Andraida', 'De la cruz', 1, 0, 4),
+(71, 0, 0, 0, '2021-08-28', '2021-08-28', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0, 0),
+(72, 0, 0, 0, '2021-08-28', '2021-08-28', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0, 0),
+(73, 0, 0, 0, '2021-08-28', '2021-08-27', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0, 0),
+(74, 0, 0, 0, '2021-08-28', '2021-08-20', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0, 0),
+(75, 0, 0, 0, '2021-08-28', '2021-08-12', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0, 0),
+(76, 0, 0, 0, '2021-08-28', '2021-07-29', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 0, '0000-00-00', '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -213,6 +259,33 @@ CREATE TABLE `donaciones` (
   `don_comprobante` blob NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horario_actividad`
+--
+
+CREATE TABLE `horario_actividad` (
+  `ide_horario` int(11) NOT NULL,
+  `ide_tipoActividad` int(11) NOT NULL,
+  `hora_inicio` time NOT NULL,
+  `hora_fin` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `horario_actividad`
+--
+
+INSERT INTO `horario_actividad` (`ide_horario`, `ide_tipoActividad`, `hora_inicio`, `hora_fin`) VALUES
+(1, 1, '10:00:00', '11:00:00'),
+(2, 1, '11:00:00', '12:00:00'),
+(3, 3, '13:00:00', '14:00:00'),
+(4, 1, '14:00:00', '15:00:00'),
+(5, 1, '15:00:00', '16:00:00'),
+(7, 2, '10:00:00', '11:00:00'),
+(9, 2, '08:10:00', '09:10:00'),
+(10, 3, '13:10:00', '14:20:00');
 
 -- --------------------------------------------------------
 
@@ -291,7 +364,8 @@ INSERT INTO `tipoactividad` (`id_tipoActividad`, `tip_descripcion`, `tip_valor`)
 (3, 'Bautismo', 0),
 (4, 'Confirmación', 0),
 (5, 'Visita', 0),
-(9, 'Retiro', 0);
+(9, 'Retiro', 0),
+(10, 'Matrimonio', 0);
 
 -- --------------------------------------------------------
 
@@ -388,7 +462,8 @@ ALTER TABLE `certificados`
 ALTER TABLE `datosactividad`
   ADD PRIMARY KEY (`id_datosActividad`),
   ADD KEY `id_tipoActividad` (`id_tipoActividad`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `ide_horario` (`ide_horario`);
 
 --
 -- Indices de la tabla `donaciones`
@@ -396,6 +471,13 @@ ALTER TABLE `datosactividad`
 ALTER TABLE `donaciones`
   ADD PRIMARY KEY (`id_donacion`),
   ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `horario_actividad`
+--
+ALTER TABLE `horario_actividad`
+  ADD PRIMARY KEY (`ide_horario`),
+  ADD KEY `id_tipoActividad` (`ide_tipoActividad`);
 
 --
 -- Indices de la tabla `recibo`
@@ -456,19 +538,25 @@ ALTER TABLE `caritas`
 -- AUTO_INCREMENT de la tabla `certificados`
 --
 ALTER TABLE `certificados`
-  MODIFY `id_certificado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_certificado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `datosactividad`
 --
 ALTER TABLE `datosactividad`
-  MODIFY `id_datosActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_datosActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de la tabla `donaciones`
 --
 ALTER TABLE `donaciones`
   MODIFY `id_donacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `horario_actividad`
+--
+ALTER TABLE `horario_actividad`
+  MODIFY `ide_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `recibo`
@@ -492,7 +580,7 @@ ALTER TABLE `solicitudes`
 -- AUTO_INCREMENT de la tabla `tipoactividad`
 --
 ALTER TABLE `tipoactividad`
-  MODIFY `id_tipoActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_tipoActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -525,36 +613,10 @@ ALTER TABLE `certificados`
   ADD CONSTRAINT `fk_id_usuario4` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
--- Filtros para la tabla `datosactividad`
---
-ALTER TABLE `datosactividad`
-  ADD CONSTRAINT `fk_id_tipoactividad3` FOREIGN KEY (`id_tipoActividad`) REFERENCES `tipoactividad` (`id_tipoActividad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_id_usuario5` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `donaciones`
 --
 ALTER TABLE `donaciones`
   ADD CONSTRAINT `fk_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
-
---
--- Filtros para la tabla `solicitudes`
---
-ALTER TABLE `solicitudes`
-  ADD CONSTRAINT `fk_id_usuario3` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `fk_id_rol` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`);
-
---
--- Filtros para la tabla `usuariocarita`
---
-ALTER TABLE `usuariocarita`
-  ADD CONSTRAINT `fk_id_carita` FOREIGN KEY (`id_carita`) REFERENCES `caritas` (`id_carita`),
-  ADD CONSTRAINT `fk_id_usuario2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
