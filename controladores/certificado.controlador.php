@@ -437,12 +437,13 @@
             $nombremadre = mainModel::limpiar_cadena($_POST['nombrenoviae']);
             $padrinos = mainModel::limpiar_cadena($_POST['padrinose']);
             $notamarginal = mainModel::limpiar_cadena($_POST['notamarginale']);
-            $aniocivil = mainModel::limpiar_cadena($_POST['aniocivile']);
+            $intra = mainModel::limpiar_cadena($_POST['introe']);
+            /*$aniocivil = mainModel::limpiar_cadena($_POST['aniocivile']);
             $tomocivil = mainModel::limpiar_cadena($_POST['tomocivile']);
             $paginacivil = mainModel::limpiar_cadena($_POST['paginacivile']);
             $actacivil = mainModel::limpiar_cadena($_POST['actacivile']);
             $lugarcivil = mainModel::limpiar_cadena($_POST['lugarcivile']);
-            $fechacivil = mainModel::limpiar_cadena($_POST['fechacivile']);
+            $fechacivil = mainModel::limpiar_cadena($_POST['fechacivile']);*/
             $observacion = mainModel::limpiar_cadena($_POST['observacione']);
             $certifica = mainModel::limpiar_cadena($_POST['certificae']);
 
@@ -458,12 +459,13 @@
                 "nombremadre" => $nombremadre,
                 "padrinos" => $padrinos,
                 "notamarginal" => $notamarginal,
-                "aniocivil" => $aniocivil,
+                "intra" => $intra,
+                /*"aniocivil" => $aniocivil,
                 "tomocivil" => $tomocivil,
                 "paginacivil" => $paginacivil,
                 "actacivil" => $actacivil,
                 "lugarcivil" => $lugarcivil,
-                "fechacivil" => $fechacivil,
+                "fechacivil" => $fechacivil,*/
                 "observacion" => $observacion,
                 "certifica" => $certifica
             ];
@@ -490,7 +492,7 @@
         }
 
 
-                /**
+        /**
          * Eliminar
          */
         public function CtrlEliminarCertificadoMatrimonio()
@@ -503,7 +505,7 @@
                 $alerta = [
                     "Alerta" => "recargar",
                     "Titulo" => "Eliminar Datos",
-                    "Texto"  => "Misa Eliminada Correctamente",
+                    "Texto"  => "Certificado Eliminada Correctamente",
                     "Tipo"   => "success"
                 ];
             } else {
@@ -531,12 +533,12 @@
             $padrinos = $_POST['padrinos'];
             $intro = $_POST['intro'];
             $notamarginal = $_POST['notamarginale'];
-            $aniocivil = $_POST['aniocivil'];
+            /*$aniocivil = $_POST['aniocivil'];
             $tomocivil = $_POST['tomocivil'];
             $paginacivil = $_POST['paginacivil'];
             $actacivil = $_POST['actacivil'];
             $lugarcivil = $_POST['lugarcivil'];
-            $fechacivil = $_POST['fechacivil'];
+            $fechacivil = $_POST['fechacivil'];*/
             $observacion = $_POST['observacion'];
             $certifica = $_POST['certifica'];
             $usuario = 1;
@@ -556,12 +558,12 @@
                 "padrinos" => $padrinos,
                 "intro" => $intro,
                 "notamarginal" => $notamarginal,
-                "aniocivil" => $aniocivil,
+                /*"aniocivil" => $aniocivil,
                 "tomocivil" => $tomocivil,
                 "paginacivil" => $paginacivil,
                 "actacivil" => $actacivil,
                 "lugarcivil" => $lugarcivil,
-                "fechacivil" => $fechacivil,
+                "fechacivil" => $fechacivil,*/
                 "observacion" => $observacion,
                 "certifica" => $certifica,
                 "usuario" => $usuario

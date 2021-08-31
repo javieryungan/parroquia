@@ -33,7 +33,7 @@ $editarmisa    = $horario->CtrlEditarCertificadoBautizo();
 <div class="container-fluid">
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; EDITAR HORARIO</h3>
+            <h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; EDITAR CERTIFICADO DE BAUTIZO</h3>
         </div>
         <div class="panel-body">
             <form data-form="" class="FormularioAjax" method="POST" action="<?php echo SERVERURL ?>ajax/certificadoAjax.php" data-form="save" autocomplete="off">

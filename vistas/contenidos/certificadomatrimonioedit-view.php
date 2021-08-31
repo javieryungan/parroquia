@@ -31,7 +31,7 @@ $editarmisa    = $horario->CtrlEditarCertificadoMatrimonio();
 <div class="container-fluid">
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO HORARIO</h3>
+            <h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; ACTUALIZAR CERTIFICADO MATRIMONIO</h3>
         </div>
         <div class="panel-body">
             <form data-form="" class="FormularioAjax" method="POST" action="<?php echo SERVERURL ?>ajax/certificadoAjax.php" data-form="save" autocomplete="off">
@@ -71,6 +71,12 @@ $editarmisa    = $horario->CtrlEditarCertificadoMatrimonio();
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
+                                    <label class="control-label">INTRA/EXTRA: <span style="color: red;">*</span></label>
+                                    <input class="form-control"   value="<?php echo $editarmisa['ce_intro_extra'] ?>" type="text" name="introe" required>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
                                     <label class="control-label">NOMBRE NOVIO: <span style="color: red;">*</span></label>
                                     <input class="form-control"  value="<?php echo $editarmisa['ce_nombre_padre'] ?>" type="text" name="nombrenovioe" required>
                                 </div>
@@ -83,13 +89,13 @@ $editarmisa    = $horario->CtrlEditarCertificadoMatrimonio();
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">PADRINOS: </label>
+                                    <label class="control-label">TESTIGOS: </label>
                                     <textarea name="padrinose" class="form-control" rows="2" maxlength="100"  ><?php echo $editarmisa['ce_testigos_padrinos'] ?></textarea>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">NOTA MARGINAL: </label>
+                                    <label class="control-label">DESCRIPCION: </label>
                                     <textarea name="notamarginale" class="form-control" rows="2" maxlength="100" ><?php echo $editarmisa['ce_nota_marginal'] ?></textarea>
                                 </div>
                             </div>
@@ -103,48 +109,6 @@ $editarmisa    = $horario->CtrlEditarCertificadoMatrimonio();
                                 <div class="form-group label-floating">
                                     <label class="control-label">CERTIFICA: <span style="color: red;">*</span></label>
                                     <input class="form-control" type="text" name="certificae" value="<?php echo $editarmisa['ce_certifica'] ?>" required>
-                                </div>
-                            </div>
-                            <!--Datos Registro civil -->
-
-                            <div class="col-xs-12 badge bg-info text-wrap">
-                                <h4 class="fw-bold">REGISTRO CIVIL.</h4>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">AÑO: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="aniocivile" value="<?php echo $editarmisa['ce_anio_civil'] ?>" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">TOMO: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="tomocivile" value="<?php echo $editarmisa['ce_tomo_civil'] ?>" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">PAGINA: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="paginacivile" value="<?php echo $editarmisa['ce_pagina_civil'] ?>" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">ACTA: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="actacivile" value="<?php echo $editarmisa['ce_acta_civil'] ?>" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">LUGAR: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="lugarcivile" value="<?php echo $editarmisa['ce_lugar_civil'] ?>" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">FECHA: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="date" name="fechacivile" value="<?php echo $editarmisa['ce_fecha_civil'] ?>" required>
                                 </div>
                             </div>
                         </div>

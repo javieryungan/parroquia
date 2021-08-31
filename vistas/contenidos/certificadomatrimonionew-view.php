@@ -29,7 +29,7 @@ $tipoactividad = $misas->CtrConsultarTipoactividadAll();
 <div class="container-fluid">
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO HORARIO</h3>
+            <h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; GENERAR NUEVO CERTIFICADO DE MATRIMONIO</h3>
         </div>
         <div class="panel-body">
             <form data-form="" class="FormularioAjax" method="POST" action="<?php echo SERVERURL ?>ajax/certificadoAjax.php" data-form="save" autocomplete="off">
@@ -68,6 +68,12 @@ $tipoactividad = $misas->CtrConsultarTipoactividadAll();
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
+                                    <label class="control-label">INTRA/EXTRA: <span style="color: red;">*</span></label>
+                                    <input class="form-control" type="text" name="intro" required>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
                                     <label class="control-label">NOMBRE NOVIO: <span style="color: red;">*</span></label>
                                     <input class="form-control" type="text" name="nombrenovio" required>
                                 </div>
@@ -80,13 +86,13 @@ $tipoactividad = $misas->CtrConsultarTipoactividadAll();
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">PADRINOS: </label>
+                                    <label class="control-label">TESTIGOS: </label>
                                     <textarea name="padrinos" class="form-control" rows="2" maxlength="100"></textarea>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">NOTA MARGINAL: </label>
+                                    <label class="control-label">DESCRIPCION: </label>
                                     <textarea name="notamarginale" class="form-control" rows="2" maxlength="100"></textarea>
                                 </div>
                             </div>
@@ -100,54 +106,6 @@ $tipoactividad = $misas->CtrConsultarTipoactividadAll();
                                 <div class="form-group label-floating">
                                     <label class="control-label">CERTIFICA: <span style="color: red;">*</span></label>
                                     <input class="form-control" type="text" name="certifica" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">INTRO/EXTRA: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="intro" required>
-                                </div>
-                            </div>
-                            <!--Datos Registro civil -->
-
-                            <div class="col-xs-12 badge bg-info text-wrap">
-                                <h4 class="fw-bold">REGISTRO CIVIL.</h4>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">AÑO: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="aniocivil" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">TOMO: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="tomocivil" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">PAGINA: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="paginacivil" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">ACTA: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="actacivil" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">LUGAR: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="text" name="lugarcivil" required>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">FECHA: <span style="color: red;">*</span></label>
-                                    <input class="form-control" type="date" name="fechacivil" required>
                                 </div>
                             </div>
                         </div>

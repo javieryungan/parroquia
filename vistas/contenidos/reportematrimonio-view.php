@@ -37,11 +37,8 @@
     //Columna derecha
     $pdf->SetFont('Times','',11);
     $pdf->SetXY(90,115);
-    $pdf->MultiCell(100,10,utf8_decode(dateName('30/08/2021').
-'El la parroquia Santa María Madre de la Iglesia 
-El '.utf8_decode($editarmisa['ce_nombre_parroco']).'presenció y bendijo '.$editarmisa['ce_intro_extra'].' Missam el matrimonio que contrajo.
-El Sr. '.utf8_decode($editarmisa['ce_nombre_padre']).' con la Srta. '.utf8_decode($editarmisa['ce_nombre_madre']).' feligreses de la Parroquia Santa María de la Iglesia
-Fueron testigos: '.$editarmisa['ce_testigos_padrinos']),0,'L');
+    $pdf->MultiCell(100,10,utf8_decode(dateName('30/08/2021').' El la parroquia Santa María Madre de la Iglesia. El '.utf8_decode($editarmisa['ce_nombre_parroco']).' presenció y bendijo '.$editarmisa['ce_intro_extra'].' Missam el matrimonio que contrajo. El Sr. '.utf8_decode($editarmisa['ce_nombre_padre']).' con la Srta. '.utf8_decode($editarmisa['ce_nombre_madre']).' feligreses de la Parroquia Santa María de la Iglesia
+    Fueron testigos: '.$editarmisa['ce_testigos_padrinos']),0,'L');
     
     $pdf->SetXY(20,195);
     $pdf->MultiCell(180,10,utf8_decode('Lo certifica '.$editarmisa['ce_certifica']),0,'L');
@@ -120,4 +117,3 @@ Fueron testigos: '.$editarmisa['ce_testigos_padrinos']),0,'L');
     
         return $result;
     }
-?>

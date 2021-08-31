@@ -66,13 +66,7 @@
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="<?php echo SERVERURL; ?>certificados/"><i class="fas fa-certificate"></i> Certificados</a>
-						</li>
-						<li>
 							<a href="<?php echo SERVERURL; ?>certificadobautizo/"><i class="fas fa-file-contract"></i> Certificado de bautismo</a>
-						</li>
-						<li>
-							<a href="<?php echo SERVERURL; ?>certificadobautizo-add/"><i class="fas fa-file-contract"></i> Certificado de confirmación</a>
 						</li>
 						<li>
 							<a href="<?php echo SERVERURL; ?>certificadomatrimonio/"><i class="fas fa-file-contract"></i> Certificado de matrimonio</a>
