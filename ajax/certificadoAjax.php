@@ -5,7 +5,7 @@ $peticionAjax = true;
 require_once '../core/configGeneral.php';
 
 
-if (isset($_POST['notamarginal']) || isset($_POST['certificadobautizoDelete']) || isset($_POST['idbautizoe'])) {
+if (isset($_POST['consulta']) || isset($_POST['notamarginal']) || isset($_POST['certificadobautizoDelete']) || isset($_POST['idbautizoe'])) {
     require_once '../controladores/certificado.controlador.php';
     
     //insertar
@@ -25,8 +25,14 @@ if (isset($_POST['notamarginal']) || isset($_POST['certificadobautizoDelete']) |
         $delMisa = new certificadosControlador();
         echo $delMisa->CtrlEliminarCertificadoBautizo();
     }
+
+     // buscar
+     if(isset($_POST['consulta'])){
+        $delMisa = new certificadosControlador();
+        echo $delMisa->CtrlPaginadorCertificadoBautizo(1,10,$_POST['consulta']);
+    }
     
-}else if (isset($_POST['nombrenovio'])||isset($_POST['certificadomatrimonioDelete'])|| isset($_POST['idmatrimonioe'])) {
+}else if (isset($_POST['searchmatrimonio']) || isset($_POST['nombrenovio'])||isset($_POST['certificadomatrimonioDelete'])|| isset($_POST['idmatrimonioe'])) {
     require_once '../controladores/certificado.controlador.php';
     
     //insertar
@@ -46,6 +52,12 @@ if (isset($_POST['notamarginal']) || isset($_POST['certificadobautizoDelete']) |
     if (isset($_POST['certificadomatrimonioDelete'])) {
         $delMisa = new certificadosControlador();
         echo $delMisa->CtrlEliminarCertificadoMatrimonio();
+    }
+
+    // buscar
+    if(isset($_POST['searchmatrimonio'])){
+        $delMisa = new certificadosControlador();
+        echo $delMisa->CtrlPaginadorCertificadoMatrimonio(1,10,$_POST['searchmatrimonio']);
     }
     
 } else {

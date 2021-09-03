@@ -102,16 +102,23 @@
 
 
         /* paginador */
-        public function CtrlPaginadorCertificadoBautizo($pagina, $registros)
+        public function CtrlPaginadorCertificadoBautizo($pagina, $registros, $consulta)
         {
             $pagina    = mainModel::limpiar_cadena($pagina);
             $registros = mainModel::limpiar_cadena($registros);
             $pagina    = (isset($pagina) && $pagina > 0) ? (int) $pagina : 1;
             $inicio    = ($pagina > 0) ? (($pagina * $registros) - $registros) : 0;
             $conexion  = mainModel::conectar();
+            $query='';
+            // echo ($consulta != "");
+            if ($consulta != "") {
+                $query="SELECT * FROM certificados where ce_nombre_bautizado LIKE '%$consulta%' or ce_fecha_celebracion LIKE '%$consulta%' AND id_tipoActividad =3  ORDER by id_certificado ASC LIMIT $inicio, $registros";
+            } else {
+                $query="SELECT * FROM certificados where id_tipoActividad =3 ORDER by id_certificado ASC LIMIT $inicio, $registros";
+            }
 
-            $datos = $conexion->query("SELECT * FROM certificados where id_tipoActividad =3 ORDER by id_certificado ASC LIMIT $inicio, $registros");
-
+            // echo ($query);
+            $datos = $conexion->query($query);
             $datos    = $datos->fetchAll();
             $total    = $conexion->query("SELECT COUNT(*) FROM certificados");
             $total    = (int) $total->fetchColumn();
@@ -308,15 +315,23 @@
         }
 
         //paginador matrimonio
-        public function CtrlPaginadorCertificadoMatrimonio($pagina, $registros)
+        public function CtrlPaginadorCertificadoMatrimonio($pagina, $registros,$consulta)
         {
             $pagina    = mainModel::limpiar_cadena($pagina);
             $registros = mainModel::limpiar_cadena($registros);
             $pagina    = (isset($pagina) && $pagina > 0) ? (int) $pagina : 1;
             $inicio    = ($pagina > 0) ? (($pagina * $registros) - $registros) : 0;
             $conexion  = mainModel::conectar();
+            $query='';
+            //echo ($consulta != "");
+            if ($consulta != "") {
+                $query="SELECT * FROM certificados where id_tipoActividad not in (3)  AND ce_nombre_padre LIKE '%$consulta%' OR ce_nombre_madre LIKE '%$consulta%' OR ce_fecha_celebracion LIKE '%$consulta%' AND ce_nombre_bautizado is null AND  id_tipoActividad =10  ORDER by id_certificado ASC LIMIT $inicio, $registros";
+            } else {
+                $query="SELECT * FROM certificados where id_tipoActividad =10 ORDER by id_certificado ASC LIMIT $inicio, $registros";
+            }
 
-            $datos = $conexion->query("SELECT * FROM certificados where id_tipoActividad =10 ORDER by id_certificado ASC LIMIT $inicio, $registros");
+            // echo ($query);
+            $datos = $conexion->query($query);
 
             $datos    = $datos->fetchAll();
             $total    = $conexion->query("SELECT COUNT(*) FROM certificados");
@@ -329,7 +344,7 @@
                    <thead>
                         <tr>
                         <th class="text-center">ID</th>
-                        <th class="text-center">FECHA REGISTRO</th>
+                        <th class="text-center">FECHA CELEBRACION</th>
                         <th class="text-center">NOMBRE NOVIO</th>
                         <th class="text-center">NOMBRE NOVIA</th>
                         <th class="text-center">ACTUALIZAR</th>
@@ -343,7 +358,7 @@
                     $tabla .= '
                         <tr>
                             <td>' . $value['id_certificado'] . '</td>
-                            <td>' . $value['ce_fecha_registro'] . '</td>
+                            <td>' . $value['ce_fecha_celebracion'] . '</td>
                             <td>' . $value['ce_nombre_padre'] . '</td>
                             <td>' . $value['ce_nombre_madre'] . '</td>
                             <td>

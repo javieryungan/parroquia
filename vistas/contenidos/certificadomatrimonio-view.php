@@ -29,12 +29,20 @@ $certificado = new certificadosControlador();
             <h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO CERTIFICADO</h3>
         </div>
         <div class="panel-body">
-        <div class="table-responsive">
-                <?php require_once './controladores/certificado.controlador.php';
-                $certificado = new certificadosControlador();
-                $pagina   = explode("/", $_GET["views"]);
-                echo $certificado->CtrlPaginadorCertificadoMatrimonio($pagina[1], 5);
-                ?>
+            <div class="table-responsive">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group label-floating">
+                        <label class="control-label">BUSCAR: </label>
+                        <input class="form-control" type="text" onkeyup="buscardatos('<?php echo SERVERURL ?>ajax/certificadoAjax.php', 'txt_search_bautizo',2)" name="txt_search_bautizo" id=txt_search_bautizo>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12" id="tabla_matrimonio">
+                    <?php require_once './controladores/certificado.controlador.php';
+                    $certificado = new certificadosControlador();
+                    $pagina   = explode("/", $_GET["views"]);
+                    echo $certificado->CtrlPaginadorCertificadoMatrimonio($pagina[1], 5, '');
+                    ?>
+                </div>
             </div>
         </div>
     </div>

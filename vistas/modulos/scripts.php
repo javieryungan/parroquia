@@ -9,6 +9,7 @@
 	<script src="<?php echo SERVERURL; ?>vistas/lib/main.js"></script>
 	<script src="<?php echo SERVERURL; ?>vistas/lib/locales/es.js"></script>
 	<script src="<?php echo SERVERURL; ?>vistas/js/data.js"></script>
+	<script src="<?php echo SERVERURL; ?>vistas/js/busqueda.js"></script>
 	<script src="https://kit.fontawesome.com/60fb784e5d.js" crossorigin="anonymous"></script>
 	<script>
 		$.material.init();
