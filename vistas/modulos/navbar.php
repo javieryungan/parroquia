@@ -34,7 +34,7 @@
 			<li class="pull-left">
 				<a href="#!" class="btn-menu-dashboard"><i class="zmdi zmdi-more-vert"></i></a>
 			</li>
-			<a href="<?php echo SERVERURL; ?>login/" class="btn btn-success" style="background-color: #a50e04; color:#fff; ">Inicia sesión o Regístrate</a>&nbsp; &nbsp;
+			<!-- <a href="<?php echo SERVERURL; ?>login/" class="btn btn-success" style="background-color: #a50e04; color:#fff; ">Inicia sesión o Regístrate</a>&nbsp; &nbsp; -->
 		</ul>
 
 
