@@ -23,7 +23,7 @@ class LoginControlador extends LoginModelo
             $_SESSION['rol']       = $row['id_rol'];
             $_SESSION['rolnombre'] = $row['rol_nombre'];
 
-            $url                = SERVERURL . "home/";
+            $url                = SERVERURL . "dashboard/";
             return $urllocation = '<script> window.location="' . $url . '"</script>';
         } else {
             $alerta = [

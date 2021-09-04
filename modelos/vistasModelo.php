@@ -6,7 +6,7 @@ class vistasModelo
     {
         //permitir las vistas q se van a mostrar
         $listaBlanca = [
-            "home", "search", "certificados", "certificadoslista", "myaccount",
+            "dashboard", "search", "certificados", "certificadoslista", "myaccount",
             "reqbautismo", "reqmatrimonio", "reqconfirmacion", "bautismo", "confirmacion", "matrimonio",
             "bautismoslista", "confirmacioneslista", "matrimonioslista", "misas", "misaslista", "visitas",
             "visitaslista", "asistenciasgen", "asistenciasgenlista", "asistenciascar", "asistenciascarlista",
@@ -26,16 +26,20 @@ class vistasModelo
             if (is_file("./vistas/contenidos/" . $vistas . "-view.php")) {
                 $contenido = "./vistas/contenidos/" . $vistas . "-view.php";
             } else {
-                $contenido = "login";
+                $contenido = "home";
             }
+        } elseif ($vistas == "home") {
+            $contenido = "home";
         } elseif ($vistas == "login") {
             $contenido = "login";
         } elseif ($vistas == "reportebautiso") {
             $contenido = "reportebautiso";
         } elseif ($vistas == "reportematrimonio") {
             $contenido = "reportematrimonio";
+        } elseif ($vistas == "registro") {
+            $contenido = "registro";
         } elseif ($vistas == "index") {
-            $contenido = "login";
+            $contenido = "home";
         } else {
             $contenido = "404";
         }
