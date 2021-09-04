@@ -1,4 +1,4 @@
-<?php $rol = $_SESSION['rol'] ?>
+<?php $rol = $_SESSION['rol']?>
 
 <section class="full-box cover dashboard-sideBar">
 	<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
@@ -14,14 +14,15 @@
 				<figcaption class="text-center text-titles"> <br> <?php echo $_SESSION['usuario']; ?> <br> <small class="text-center text-titles"> <?php echo $_SESSION['rolnombre']; ?></small> </figcaption>
 			</figure>
 			<ul class="full-box list-unstyled text-center">
+
 				<li>
-					<a href="<?php echo SERVERURL; ?>mydata/" title="Mis datos">
-						<i class="zmdi zmdi-account-circle"></i>
+					<a href="<?php echo SERVERURL; ?>myaccount/" title="Mi cuenta">
+						<i class="zmdi zmdi-account-circle "></i>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo SERVERURL; ?>myaccount/" title="Mi cuenta">
-						<i class="zmdi zmdi-settings"></i>
+					<a href="<?php echo SERVERURL; ?>password/" title="Cambiar contraseña">
+						<i class="fas fa-key"></i>
 					</a>
 				</li>
 				<li>
@@ -34,32 +35,17 @@
 		<!-- SideBar Menu -->
 		<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3 || $_SESSION['rol'] == 4) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="<?php echo SERVERURL; ?>home/">
 						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Inicio
 					</a>
 				</li>
-			<?php } ?>
-
-			<?php if ($_SESSION['rol'] == 3) { ?>
-				<li>
-					<a href="<?php echo SERVERURL; ?>secretariohome/">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Inicio
-					</a>
-				</li>
-			<?php } ?>
-
-			<?php if ($_SESSION['rol'] == 4) { ?>
-				<li>
-					<a href="<?php echo SERVERURL; ?>visitantehome/">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Inicio
-					</a>
-				</li>
-			<?php } ?>
+			<?php }?>
 
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) { ?>
+
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="fas fa-certificate"></i> Certificados <i class="zmdi zmdi-caret-down pull-right"></i>
@@ -73,21 +59,21 @@
 						</li>
 					</ul>
 				</li>
-			<?php } ?>
+			<?php }?>
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="<?php echo SERVERURL; ?>horarios/"><i class="fas fa-calendar"></i> Horarios</a>
 				</li>
-			<?php } ?>
+			<?php }?>
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="<?php echo SERVERURL; ?>calendario/"><i class="fas fa-calendar"></i> Calendario eventos</a>
 				</li>
-			<?php } ?>
+			<?php }?>
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3 || $_SESSION['rol'] == 4) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="fas fa-church"></i> Sacramentos <i class="zmdi zmdi-caret-down pull-right"></i>
@@ -109,9 +95,9 @@
 
 					</ul>
 				</li>
-			<?php } ?>
+			<?php }?>
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3 || $_SESSION['rol'] == 4) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="fas fa-address-book"></i> Agenda <i class="zmdi zmdi-caret-down pull-right"></i>
@@ -123,14 +109,12 @@
 						<li>
 							<a href="<?php echo SERVERURL; ?>visitas/"><i class="fas fa-route"></i> Visitas</a>
 						</li>
-						<li>
-							<a href=""><i class="fas fa-calendar-alt"></i> Calendario</a>
-						</li>
+
 					</ul>
 				</li>
-			<?php } ?>
+			<?php }?>
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="fas fa-user-check"></i> Asistencias <i class="zmdi zmdi-caret-down pull-right"></i>
@@ -145,32 +129,24 @@
 					</ul>
 				</li>
 
-			<?php } ?>
+			<?php }?>
 
 
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3 || $_SESSION['rol'] == 4) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="fas fa-envelope"></i> Solicitudes <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="<?php echo SERVERURL; ?>solicitudes/"><i class="fas fa-envelope-open-text"></i> Solicitudes</a>
+							<a href="<?php echo SERVERURL; ?>solicitudes/"><i class="fas fa-envelope-open-text"></i> Envio de solicitudes</a>
 						</li>
-						<li>
-							<a href="<?php echo SERVERURL; ?>solicitudmatricula/"><i class="fas fa-envelope-open-text"></i> Matricula</a>
-						</li>
-						<li>
-							<a href="<?php echo SERVERURL; ?>solicitudagenda/"><i class="fas fa-envelope-open-text"></i> Agendamientos</a>
-						</li>
-						<li>
-							<a href="<?php echo SERVERURL; ?>solicitudcertificado/"><i class="fas fa-envelope-open-text"></i> Certificados</a>
-						</li>
+
 					</ul>
 				</li>
-			<?php } ?>
-			<?php if ($_SESSION['rol'] == 1) { ?>
+			<?php }?>
+			<?php if ($_SESSION['rol'] == 1) {?>
 				<li>
 					<a href="<?php echo SERVERURL; ?>recibo/">
 						<i class="zmdi zmdi-book-image zmdi-hc-fw"></i> C..omprobantes de pago
@@ -183,9 +159,9 @@
 						<i class="fas fa-dollar-sign"></i> Aportes y Actividades
 					</a>
 				</li>
-			<?php } ?>
+			<?php }?>
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="<?php echo SERVERURL; ?>retiros/">
 						<i class="fas fa-campground"></i> Retiros
@@ -198,31 +174,31 @@
 						<i class="fas fa-hand-holding-water"></i> Cáritas
 					</a>
 				</li>
-			<?php } ?>
+			<?php }?>
 
-			<?php if ($_SESSION['rol'] == 1) { ?>
+			<?php if ($_SESSION['rol'] == 1) {?>
 				<li>
 					<a href="<?php echo SERVERURL; ?>usuarios/">
 						<i class="fas fa-users"></i> Usuarios
 					</a>
 				</li>
-			<?php } ?>
+			<?php }?>
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) {?>
 				<li>
 					<a href="<?php echo SERVERURL; ?>donaciones/">
 						<i class="fas fa-donate"></i> Donaciones y pagos<br>
 					</a>
 				</li>
-			<?php } ?>
+			<?php }?>
 
-			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) { ?>
+			<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) {?>
 				<li>
 					<a href="">
 						<i class="fas fa-stream"></i> Reportes
 					</a>
 				</li>
-			<?php } ?>
+			<?php }?>
 
 		</ul>
 		<br>
