@@ -1,6 +1,6 @@
 <?php
 
-const SERVER     = "localhost:3306";
+const SERVER     = "localhost:3307";
 const DB         = "parroquia";
 const USER       = "root";
 const PASS       = "";
