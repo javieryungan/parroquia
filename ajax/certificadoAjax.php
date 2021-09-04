@@ -4,10 +4,9 @@
 $peticionAjax = true;
 require_once '../core/configGeneral.php';
 
-
 if (isset($_POST['consulta']) || isset($_POST['notamarginal']) || isset($_POST['certificadobautizoDelete']) || isset($_POST['idbautizoe'])) {
     require_once '../controladores/certificado.controlador.php';
-    
+
     //insertar
     if (isset($_POST['notamarginal'])) {
         //echo ('ingreso a insertar baut');
@@ -26,15 +25,15 @@ if (isset($_POST['consulta']) || isset($_POST['notamarginal']) || isset($_POST['
         echo $delMisa->CtrlEliminarCertificadoBautizo();
     }
 
-     // buscar
-     if(isset($_POST['consulta'])){
+    // buscar
+    if (isset($_POST['consulta'])) {
         $delMisa = new certificadosControlador();
-        echo $delMisa->CtrlPaginadorCertificadoBautizo(1,10,$_POST['consulta']);
+        echo $delMisa->CtrlPaginadorCertificadoBautizo(1, 10, $_POST['consulta']);
     }
-    
-}else if (isset($_POST['searchmatrimonio']) || isset($_POST['nombrenovio'])||isset($_POST['certificadomatrimonioDelete'])|| isset($_POST['idmatrimonioe'])) {
+
+} else if (isset($_POST['searchmatrimonio']) || isset($_POST['nombrenovio']) || isset($_POST['certificadomatrimonioDelete']) || isset($_POST['idmatrimonioe'])) {
     require_once '../controladores/certificado.controlador.php';
-    
+
     //insertar
     if (isset($_POST['nombrenovio'])) {
         //echo ('ingreso a insertar matri');
@@ -55,11 +54,11 @@ if (isset($_POST['consulta']) || isset($_POST['notamarginal']) || isset($_POST['
     }
 
     // buscar
-    if(isset($_POST['searchmatrimonio'])){
+    if (isset($_POST['searchmatrimonio'])) {
         $delMisa = new certificadosControlador();
-        echo $delMisa->CtrlPaginadorCertificadoMatrimonio(1,10,$_POST['searchmatrimonio']);
+        echo $delMisa->CtrlPaginadorCertificadoMatrimonio(1, 10, $_POST['searchmatrimonio']);
     }
-    
+
 } else {
     session_start();
     session_destroy();
