@@ -6,21 +6,20 @@ class vistasModelo
     {
         //permitir las vistas q se van a mostrar
         $listaBlanca = [
-            "home", "search", "certificados", "certificadoslista", "myaccount", "mydata",
+            "home", "search", "certificados", "certificadoslista", "myaccount",
             "reqbautismo", "reqmatrimonio", "reqconfirmacion", "bautismo", "confirmacion", "matrimonio",
             "bautismoslista", "confirmacioneslista", "matrimonioslista", "misas", "misaslista", "visitas",
             "visitaslista", "asistenciasgen", "asistenciasgenlista", "asistenciascar", "asistenciascarlista",
-            "solicitudes", "solicitudeslista", "solicitudmatricula", "solicitudagenda", "solicitudcertificado",
-            "recibo", "reciboslista", "aportes", "aporteslista", "retiros", "retiroslista", "caritas",
-            "caritaslista", "usuarios", "usuarioslista", "donaciones", "donacioneslista", "enviarrequisitos",
-            "misasup", "visitasup", "retirosup", "caritasup", "usuariosup", "registros", "visitantehome",
-            "secretariohome", "salir", "buscarmisa", "asistenciasgenup", "aportesup", "asistenciascarup",
+            "solicitudes", "solicitudeslista",
+            "recibo", "recibolista", "aportes", "aporteslista", "retiros", "retiroslista", "caritas",
+            "caritaslista", "usuarios", "usuarioslista", "donaciones", "enviarrequisitos",
+            "misasup", "visitasup", "retirosup", "caritasup", "usuariosup", "registros", "salir", "buscarmisa", "asistenciasgenup", "aportesup", "asistenciascarup", "password",
             // modifico yo calendaio
             "calendario",
             // horarios
             "horarios", "horariosnew", "horariosedit",
             // certificado bautizo
-            "certificadobautizo", "certificadobautizonew","certificadobautizoedit","certificadomatrimonio","certificadomatrimonionew","certificadomatrimonioedit"
+            "certificadobautizo", "certificadobautizonew", "certificadobautizoedit", "certificadomatrimonio", "certificadomatrimonionew", "certificadomatrimonioedit",
         ];
 
         if (in_array($vistas, $listaBlanca)) {
@@ -35,7 +34,7 @@ class vistasModelo
             $contenido = "reportebautiso";
         } elseif ($vistas == "reportematrimonio") {
             $contenido = "reportematrimonio";
-        }  elseif ($vistas == "index") {
+        } elseif ($vistas == "index") {
             $contenido = "login";
         } else {
             $contenido = "404";
