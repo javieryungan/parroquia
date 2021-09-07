@@ -30,6 +30,8 @@ class vistasModelo
             }
         } elseif ($vistas == "home") {
             $contenido = "home";
+        }elseif ($vistas == "ajax") {
+            $contenido = "ajax";
         } elseif ($vistas == "login") {
             $contenido = "login";
         } elseif ($vistas == "reportebautiso") {

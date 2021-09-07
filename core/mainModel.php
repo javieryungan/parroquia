@@ -40,7 +40,6 @@ class mainModel
         $iv     = substr(hash('sha256', SECRET_IV), 0, 16);
         $output = openssl_decrypt(base64_decode($string), METHOD, $key, 0, $iv);
         return $output;
-
     }
 
     public static function generar_codigo_aleatorio($letra, $longitud, $num)
@@ -48,10 +47,8 @@ class mainModel
         for ($i = 1; $i <= $longitud; $i++) {
             $numero = rand(0, 9);
             $letra .= $numero;
-
         }
         return $letra . $num;
-
     }
 
     //metodo para limpiar cadena
@@ -73,6 +70,31 @@ class mainModel
         $cadena = str_ireplace("==", "", $cadena);
         return $cadena;
     }
+
+    //
+    public static function guardarArchivo($ruta, $archivo, $nombrepdf)
+    {
+        $mensaje = false;
+        if (!file_exists($ruta)) {
+            mkdir($ruta, 0777, true);
+            if (file_exists($ruta)) {
+                if (move_uploaded_file($archivo, $ruta . '/' . $nombrepdf)) {
+                    $mensaje = true;
+                } else {
+                    echo "Archivo no se pudo guardar";
+                    $mensaje = false;
+                }
+            }
+        } else {
+            if (move_uploaded_file($archivo, $ruta . '/' . $nombrepdf)) {
+                $mensaje = true;
+            } else {
+                echo "Archivo no se pudo guardar";
+                $mensaje = false;
+            }
+        }
+        return $mensaje;
+    }
     //metodos para los sweer alerts
     protected function sweet_alert($datos)
     {
@@ -84,7 +106,6 @@ class mainModel
                 '" . $datos['Tipo'] . "'
                 )
             </script>";
-
         } elseif ($datos['Alerta'] == "recargar") {
             $alerta = "
             <script>
@@ -99,7 +120,6 @@ class mainModel
 
             });
             </script>";
-
         } elseif ($datos['Alerta'] == "dirigir") {
             $alerta = "
             <script>
@@ -115,7 +135,6 @@ class mainModel
 
             });
             </script>";
-
         } elseif ($datos['Alerta'] == "limpiar") {
             $alerta = "
             <script>
@@ -130,7 +149,6 @@ class mainModel
 
             });
             </script>";
-
         }
         return $alerta;
     }
